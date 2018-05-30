@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Matriz de Fiqus</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css"/>
+
+    <style>
+        main {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Matriz de Fiqus</a>
+</nav>
+
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <canvas id="myChart" width="400" height="400"></canvas>
+
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="anticipo_minimo">Anticipo Minimo</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="anticipo_minimo" value="14910.51" placeholder="" required="">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="multiplicador_base">Multiplicador Base</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="multiplicador_base" value="2" placeholder="" required="">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="multiplicador_antiguedad">Multiplicador Antiguedad</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="multiplicador_antiguedad" value="0.01" placeholder="" required="">
+                </div>
+            </div>
+            <h2>Socios</h2>
+            <div id="jsGrid"></div>
+        </div>
+    </div>
+    </div>
+
+</main><!-- /.container -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+
+<script src="js/main.js"></script>
+</body>
+</html>
