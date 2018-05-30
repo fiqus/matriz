@@ -1,15 +1,15 @@
 $(function () {
-
+    var MAX_ROL = 10;
     var anticipo_minimo;
     var multiplicador_base;
     var multiplicador_antiguedad;
 
     var socios = [
-        {"Ingreso": 0, "Rol": 10},
-        {"Ingreso": 0, "Rol": 5},
-        {"Ingreso": 3, "Rol": 9},
-        {"Ingreso": 3, "Rol": 8},
-        {"Ingreso": 1, "Rol": 2}
+        {"Ingreso": 0, "+ Rol": 1, "Rol": 10},
+        {"Ingreso": 0, "+ Rol": 1, "Rol": 5},
+        {"Ingreso": 3, "+ Rol": 1, "Rol": 9},
+        {"Ingreso": 3, "+ Rol": 1, "Rol": 8},
+        {"Ingreso": 1, "+ Rol": 1, "Rol": 2}
     ];
 
     var ctx = document.getElementById("myChart").getContext('2d');
@@ -71,11 +71,13 @@ $(function () {
 
 
 
-    function calc_anticipo(anio, ingreso, rol) {
+    function calc_anticipo(anio, ingreso, rol, aumento_rol) {
         if(anio<ingreso){
             return null;
         }
-        var ret = anticipo_minimo * (multiplicador_base + rol / 10) * (1 + (anio - ingreso) * multiplicador_antiguedad);
+        var anios = (anio - ingreso);
+        rol = Math.min(MAX_ROL, rol + aumento_rol * anios);
+        var ret = anticipo_minimo * (multiplicador_base + rol / 10) * (1 + anios * multiplicador_antiguedad);
         return Math.round(ret*100)/100;
     }
 
@@ -95,7 +97,7 @@ $(function () {
             };
 
             for (var j = 0; j < 10; j++) {
-                dataset.data.push(calc_anticipo(j, socios[i]["Ingreso"], socios[i]["Rol"]))
+                dataset.data.push(calc_anticipo(j, socios[i]["Ingreso"], socios[i]["Rol"], socios[i]["+ Rol"]))
             }
             datasets.push(dataset);
         }
@@ -121,6 +123,7 @@ $(function () {
         fields: [
             {name: "Ingreso", type: "number", width: 50},
             {name: "Rol", type: "number", width: 50},
+            {name: "+ Rol", type: "number", width: 50},
             {type: "control"}
         ],
 
