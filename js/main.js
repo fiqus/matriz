@@ -72,6 +72,9 @@ $(function () {
 
 
     function calc_anticipo(anio, ingreso, rol) {
+        if(anio<ingreso){
+            return null;
+        }
         var ret = anticipo_minimo * (multiplicador_base + rol / 10) * (1 + (anio - ingreso) * multiplicador_antiguedad);
         return Math.round(ret*100)/100;
     }
